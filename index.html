@@ -482,6 +482,9 @@ p,ul,ol{margin:0;padding:0}
 <script>
 (function(){
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // A slide's position on the page. (offsetTop is relative to the nearest positioned parent,
+  // which for Audience and Pillars is the wrapper that carries the card animation, not the page.)
+  function pageTop(el){ return Math.round(el.getBoundingClientRect().top + window.scrollY); }
   var sections = [].slice.call(document.querySelectorAll('.section'));
   var stages = [].slice.call(document.querySelectorAll('.stage'));
   var duo = document.getElementById('duo');
@@ -515,7 +518,7 @@ p,ul,ol{margin:0;padding:0}
   var clamp = function(v){ return Math.max(0, Math.min(1, v)); };
   var lerp = function(a,b,t){ return a + (b-a)*t; };
   function update(){
-    var p = clamp((window.scrollY - duo.offsetTop) / vh);
+    var p = clamp((window.scrollY - pageTop(duo)) / vh);
     var e = reduce ? (p > .5 ? 1 : 0) : ease(p);
     // in design px, slide 2's stage starts vh/s below slide 1's stage
     var top = lerp(540, vh/s + PILLARS_Y + 50, e);
@@ -766,7 +769,7 @@ p,ul,ol{margin:0;padding:0}
   }
   function nearest(){
     var y = window.scrollY, best = 0, bd = Infinity;
-    sections.forEach(function(sec, i){ var d = Math.abs(sec.offsetTop - y); if (d < bd){ bd = d; best = i; } });
+    sections.forEach(function(sec, i){ var d = Math.abs(pageTop(sec) - y); if (d < bd){ bd = d; best = i; } });
     return best;
   }
   /* Keyboard/clicker navigation: an eased, fixed-length scroll so transitions (like the cards
@@ -776,7 +779,7 @@ p,ul,ol{margin:0;padding:0}
   function go(i){
     i = Math.max(0, Math.min(sections.length - 1, i));
     target = i;
-    var from = window.scrollY, to = sections[i].offsetTop, dist = to - from;
+    var from = window.scrollY, to = pageTop(sections[i]), dist = to - from;
     if (anim) cancelAnimationFrame(anim);
     if (reduce || Math.abs(dist) < 2){ window.scrollTo(0, to); target = null; return; }
     var dur = Math.min(1400, 700 + Math.abs(dist) / vh * 250), t0 = performance.now();
