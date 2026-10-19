@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brand Messaging Presentation</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-96.png" type="image/png" sizes="96x96">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+/* Layout: six 1920×1080 Figma frames, each scaled to fit one viewport-height section; scroll snaps between them.
+   Single dark/light look taken straight from the Figma file (ClickSend design tokens), so no theme switching. */
+:root{
+  --brand-950:#0C162B; --brand-900:#15203B; --brand-800:#192C59; --blue:#2977FF;
+  --neutral-100:#F0F3F5; --neutral-200:#DCE2E5;
+  --text-primary:#F7F9FA; --text-secondary-dark:#C4CCD1; --text-secondary:#4B575E; --arrow:#9AA6AD;
+  --display:"Power Grotesk","Archivo",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+html{scroll-snap-type:y proximity;scroll-behavior:smooth;background:var(--neutral-200)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--neutral-200);color:var(--brand-800);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+p,ul,ol{margin:0;padding:0}
+*,*::before,*::after{box-sizing:border-box}
+
+/* ---------- Sections + 1920×1080 stage ---------- */
+.section{position:relative;height:100vh;height:100svh;scroll-snap-align:start;overflow:hidden}
+.stage{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0}
+#audience{background:var(--neutral-200)}
+#pillars{background:var(--neutral-200)}
+#reveal{background:var(--brand-900)}
+#problem,#homepage,#ooh{background:var(--neutral-100)}
+.duo{position:relative}
+.duo .section{overflow:visible}
+
+.display{font-family:var(--display);font-weight:800;font-stretch:125%}
+.d-2xl{font-size:72px;line-height:90px;letter-spacing:-1.44px}
+.d-md{font-size:36px;line-height:44px;letter-spacing:-0.72px}
+.d-sm{font-size:30px;line-height:38px}
+.b-lg{font-family:var(--body);font-size:24px;line-height:1.4;font-variation-settings:"opsz" 14}
+.abs{position:absolute}
+.row{display:flex;gap:24px;align-items:center}
+
+/* ---------- 1. Audience ---------- */
+.aud-top{left:50px;top:50px;width:1820px}
+.tile{border-radius:16px;padding:24px 40px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.tile.primary{background:var(--brand-950);color:var(--text-primary)}
+.tile.secondary{background:var(--brand-900);color:var(--neutral-200)}
+.aud-top .label{width:437px;height:138px;flex:none}
+.aud-top .hero{flex:1;min-width:0;height:138px}
+.aud-top .hero .inner{display:flex;gap:40px;align-items:center;width:100%}
+.aud-top .hero .inner p:last-child{flex:1;min-width:0}
+.buyers{left:50px;top:212px;width:1820px;align-items:stretch}
+.buyers .tile{gap:16px;text-align:center;justify-content:flex-start}
+.buyers .tile:first-child{width:437px;flex:none}
+.buyers .tile:not(:first-child){flex:1;min-width:0}
+.buyers .lines{display:flex;flex-direction:column;gap:8px}
+.bar{left:50px;width:1820px;background:var(--brand-800);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.bar.thin{top:462px;height:54px;border-radius:12px;color:var(--neutral-200)}
+
+/* ---------- Problem cards (shared by slides 1 + 2, animated between them) ---------- */
+.cards{position:absolute;left:0;top:0;width:1920px;height:0;transform-origin:0 0;z-index:5;pointer-events:none}
+.pcard{position:absolute;width:437px;background:var(--neutral-100);border-radius:24px;overflow:hidden;will-change:top,height}
+.pcard h3{position:absolute;left:40px;top:40px;width:357px;margin:0;color:var(--brand-800);white-space:nowrap}
+.pcard h3 span{display:inline-block;will-change:transform}
+.pcard ul{position:absolute;left:40px;top:108px;width:357px;color:var(--text-secondary);list-style:disc;padding-left:36px;box-sizing:border-box}
+.pcard .arrow{position:absolute;left:50%;bottom:40px;width:24px;height:24px;margin-left:-12px}
+
+/* ---------- 2. Pillars ---------- */
+.pillars-in{will-change:opacity,transform}
+.bar.big{top:246px;border-radius:24px;padding:24px 40px;gap:8px;color:var(--text-primary);text-align:center}
+.bar.big p.b-lg{width:1075px}
+.pillar-row{left:50px;top:432px;width:1820px;align-items:stretch}
+.pillar{flex:1;min-width:0;background:var(--brand-950);border-radius:24px;padding:40px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;color:var(--text-secondary-dark)}
+.pillar .top{display:flex;flex-direction:column;gap:24px}
+.pillar h3{margin:0;color:var(--text-primary);padding-left:20px}
+.pillar ul{list-style:disc;padding-left:36px}
+.pillar .proofs{display:flex;flex-direction:column;gap:8px;list-style:none;padding:0}
+.pillar .proofs li{display:flex;gap:16px;align-items:flex-start}
+.pillar .proofs svg{flex:none;width:20px;height:20px;margin-top:6px}
+.pillar:first-child{justify-content:flex-start}
+
+/* ---------- 3. Reveal ---------- */
+#reveal iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;background:var(--brand-900)}
+
+/* ---------- 4. Problem + Click. Send. ---------- */
+.media-row{left:50px;top:50px;width:1820px;height:982px}
+.frame{position:relative;flex:1;min-width:0;height:100%;border-radius:24px;overflow:hidden;background:#E9E9E9;isolation:isolate}
+.frame video,.frame img{position:absolute;display:block;object-fit:cover;max-width:none}
+.frame .v-subway{width:1698px;height:1132px;left:calc(50% - 1px);top:50%;transform:translate(-50%,-50%)}
+.tag{position:absolute;left:16px;top:16px;z-index:2;display:flex;align-items:center;gap:8px;padding:4px 4px 4px 16px;border-radius:9999px;background:#F7FAFF;border:1px solid #DBE9FF;font:500 14px/20px var(--body);font-variation-settings:"opsz" 14;white-space:nowrap}
+.tag .k{color:#1750C2}
+.tag .v{background:var(--blue);color:#fff;border-radius:9999px;padding:2px 10px;transition:opacity .25s}
+.tag .v.swap{opacity:0}
+.frame .v-bus{width:898px;height:1347px;left:50%;top:calc(50% + 4.5px);transform:translate(-50%,-50%)}
+
+/* ---------- 5. Homepage mockup ---------- */
+.browser{left:270px;top:50px;width:1381px;height:980px;border-radius:24px;overflow:hidden;background:var(--brand-950);border:2px solid var(--brand-800);box-sizing:border-box;display:flex;flex-direction:column}
+.chrome{height:40px;flex:none;display:flex;align-items:center;gap:8px;padding:0 20px;background:var(--brand-950);border-bottom:2px solid var(--brand-800)}
+.chrome i{width:10px;height:10px;border-radius:50%;background:var(--brand-800)}
+.browser .viewport{position:relative;flex:1;overflow:hidden;background:var(--brand-950)}
+/* Mockup lays out at the Brand Book's 1600px homepage width, then scales into the 1377px browser frame */
+.browser iframe{position:absolute;left:0;top:0;width:1600px;height:1086px;border:0;display:block;background:var(--brand-950);transform:scale(.860625);transform-origin:0 0}
+.replay{position:absolute;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:6;font:500 13px system-ui,sans-serif;color:var(--text-secondary);background:rgba(25,44,89,.06);border:1px solid rgba(25,44,89,.18);border-radius:999px;padding:6px 14px;cursor:pointer;opacity:0;transition:opacity .2s,border-color .2s,color .2s}
+#homepage:hover .replay,.replay:focus-visible{opacity:1}
+.replay:hover{border-color:var(--blue);color:var(--blue)}
+.replay:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+@media (hover:none){.replay{opacity:1}}
+
+/* ---------- 6. OOH ---------- */
+.ooh-grid{left:50px;top:50px;width:1820px;height:980px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:24px}
+.ooh-grid figure{position:relative;margin:0;border-radius:24px;overflow:hidden;background:#E9E9E9;isolation:isolate}
+/* Each tile rebuilds its Figma frame (872 or 924 × 504) with the source image placed, sized and rotated as in Figma,
+   then scales that frame to cover the 898 × 478 tile */
+.ooh-grid .art{position:absolute;left:50%;top:50%;overflow:hidden;transform:translate(-50%,-50%) scale(var(--k))}
+.ooh-grid .art.w872{width:872px;height:504px;--k:1.0298}
+.ooh-grid .art.w924{width:924px;height:504px;--k:.9719}
+.ooh-grid .art img{position:absolute;display:block;max-width:none}
+.ooh-grid .bus img{left:-140px;top:-155px;width:1314px;height:939px}
+.ooh-grid .tablet img{left:-693.45px;top:-506.34px;width:2144.9px;height:1608.68px;transform:rotate(-17.75deg)}
+.ooh-grid .phone img{left:-172.83px;top:-118.33px;width:1129.41px;height:847.06px;transform:rotate(-13.45deg)}
+.ooh-grid .billboard img{left:-263px;top:-476px;width:1450px;height:1456px}
+
+/* ---------- Navigation dots ---------- */
+.dots{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:20}
+.dots button{width:10px;height:10px;padding:0;border-radius:50%;border:0;background:var(--arrow);opacity:.55;cursor:pointer;transition:opacity .2s,transform .2s,background .2s}
+.dots button[aria-current="true"]{opacity:1;background:var(--blue);transform:scale(1.3)}
+.dots button:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+@media (max-width:700px){.dots{display:none}}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="arrow-down" viewBox="0 0 24 24"><path d="M12 1.5v20M5.5 15.5 12 22l6.5-6.5" fill="none" stroke="#9AA6AD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="check" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="#2977FF"/><path d="M6.2 10.3l2.5 2.5 5.1-5.3" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<main>
+  <div class="duo" id="duo">
+    <!-- 1. Audience -->
+    <section class="section" id="audience" aria-label="Audience">
+      <div class="stage">
+        <div class="abs row aud-top">
+          <div class="tile primary label"><p class="display d-sm">Our audience:</p></div>
+          <div class="tile primary hero">
+            <div class="inner">
+              <p class="display d-2xl" style="white-space:nowrap">Serious SMBs</p>
+              <p class="b-lg">Established and growing businesses that depend on messaging to reach their customers. Not hobbyists. Not enterprise.</p>
+            </div>
+          </div>
+        </div>
+        <div class="abs row buyers">
+          <div class="tile secondary">
+            <p class="display d-md">Two buyers:</p>
+            <div class="lines b-lg"><p>Who they are:</p><p>How they send:</p><p>What they want:</p></div>
+          </div>
+          <div class="tile secondary">
+            <p class="display d-md">Owners &amp; operators</p>
+            <div class="lines b-lg"><p>Owners and managers who send comms themselves</p><p>Dashboard, Email-to-SMS, integrations</p><p>Get it sent, without learning a new tool</p></div>
+          </div>
+          <div class="tile secondary">
+            <p class="display d-md">Developers</p>
+            <div class="lines b-lg"><p>Developers who work inside SMBs or build for them</p><p>API, MCP, SDKs</p><p>Build it fast, without enterprise complexity</p></div>
+          </div>
+        </div>
+        <div class="abs bar thin"><p class="display d-sm">What they’re up against</p></div>
+      </div>
+    </section>
+
+    <!-- 2. Pillars (top row is the four problem cards, which travel down from slide 1) -->
+    <section class="section" id="pillars" aria-label="Pillars">
+      <div class="stage">
+        <div class="pillars-in" id="pillarsIn">
+          <div class="abs bar big">
+            <p class="display d-sm">ClickSend’s messaging pillars</p>
+            <p class="b-lg">Our four messaging pillars. Each one turns a recurring SMB pain point into a theme to build from. Use them to shape what we write, not as lines to use word for word.</p>
+          </div>
+          <div class="abs row pillar-row">
+            <article class="pillar">
+              <div class="top">
+                <h3 class="display d-md">1. Simple</h3>
+                <ul class="b-lg"><li>Easy setup and intuitive tools for both dashboard users and developers.</li></ul>
+                <ul class="proofs b-lg">
+                  <li><svg aria-hidden="true"><use href="#check"/></svg><span>Signup to first message from the dashboard in minutes</span></li>
+                  <li><svg aria-hidden="true"><use href="#check"/></svg><span>First Successful API Call in under 5 minutes</span></li>
+                </ul>
+              </div>
+            </article>
+            <article class="pillar">
+              <div class="top">
+                <h3 class="display d-md">2. Connected</h3>
+                <ul class="b-lg"><li>Dashboard, API, MCP and integrations that work with your existing stack, with pay-as-you-go pricing and no subscription.</li></ul>
+              </div>
+              <ul class="proofs b-lg">
+                <li><svg aria-hidden="true"><use href="#check"/></svg><span>Transparent PAYG pricing</span></li>
+                <li><svg aria-hidden="true"><use href="#check"/></svg><span>200+ integrations</span></li>
+              </ul>
+            </article>
+            <article class="pillar">
+              <div class="top">
+                <h3 class="display d-md">3. Reliable</h3>
+                <ul class="b-lg"><li>Dependable infrastructure built to keep messages moving, from the first message to the millionth.</li></ul>
+              </div>
+              <ul class="proofs b-lg">
+                <li><svg aria-hidden="true"><use href="#check"/></svg><span>99.95% uptime</span></li>
+                <li><svg aria-hidden="true"><use href="#check"/></svg><span>100M SMS per month</span></li>
+              </ul>
+            </article>
+            <article class="pillar">
+              <div class="top">
+                <h3 class="display d-md">4. Trusted</h3>
+                <ul class="b-lg"><li>Direct carrier routes, routing expertise and 24/7 support, with real humans on hand.</li></ul>
+              </div>
+              <ul class="proofs b-lg">
+                <li><svg aria-hidden="true"><use href="#check"/></svg><span>24/7 support</span></li>
+                <li><svg aria-hidden="true"><use href="#check"/></svg><span>Direct carrier routes to 190+ countries</span></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The four problem cards: one set, positioned by scroll between slide 1 and slide 2 -->
+    <div class="cards" id="cards" aria-hidden="false">
+      <article class="pcard"><h3 class="display d-md"><span>Time &amp; attention</span></h3>
+        <ul class="b-lg"><li>No time to learn new tools.</li><li>Manual work that should be automated.</li><li>Missed communication costs money.</li></ul>
+        <svg class="arrow" aria-hidden="true"><use href="#arrow-down"/></svg></article>
+      <article class="pcard"><h3 class="display d-md"><span>Fit &amp; growth</span></h3>
+        <ul class="b-lg"><li>Tools that don't talk to each other.</li><li>Being priced or sized for enterprise.</li><li>Being locked in to a subscription.</li></ul>
+        <svg class="arrow" aria-hidden="true"><use href="#arrow-down"/></svg></article>
+      <article class="pcard"><h3 class="display d-md"><span>Dependability</span></h3>
+        <ul class="b-lg"><li>Seasonal peaks they can't plan for.</li><li>Messages that arrive late, out of order or not at all.</li><li>Downtime at the worst possible moment.</li></ul>
+        <svg class="arrow" aria-hidden="true"><use href="#arrow-down"/></svg></article>
+      <article class="pcard"><h3 class="display d-md"><span>Risk &amp; support</span></h3>
+        <ul class="b-lg"><li>Waiting days for a support ticket reply.</li><li>Getting blamed when messages fail.</li><li>Cheap routes that risk their reputation.</li></ul>
+        <svg class="arrow" aria-hidden="true"><use href="#arrow-down"/></svg></article>
+    </div>
+  </div>
+
+  <!-- 3. Click. Send. Reveal -->
+  <section class="section" id="reveal" aria-label="Click. Send. reveal">
+    <iframe id="introFrame" title="Click. Send. intro animation" data-src="click-send-intro.html"></iframe>
+  </section>
+
+  <!-- 4. Problem + Click. Send. -->
+  <section class="section" id="problem" aria-label="Problem and Click. Send.">
+    <div class="stage">
+      <div class="abs row media-row">
+        <div class="frame">
+          <p class="tag" data-for="v-subway"><span class="k">Problem:</span><span class="v">Risk &amp; support</span></p>
+          <video class="v-subway" data-tags='[[0,"Dependability"],[4.9,"Risk &amp; support"]]' muted loop playsinline preload="auto" poster="media/underground-poster.jpg">
+            <source src="media/underground-ad3-to-ad4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="frame">
+          <p class="tag" data-for="v-bus"><span class="k">Problem:</span><span class="v">Fit &amp; growth</span></p>
+          <video class="v-bus" data-tags='[[0,"Time &amp; attention"],[4.9,"Fit &amp; growth"]]' muted loop playsinline preload="auto" poster="media/bus-shelter-poster.jpg">
+            <source src="media/bus-shelter-ad1-to-ad2.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Click. Send. + Pillars -->
+  <section class="section" id="homepage" aria-label="Click. Send. and pillars homepage">
+    <div class="stage">
+      <div class="abs browser">
+        <div class="chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="viewport"><iframe id="homeFrame" title="ClickSend homepage hero mockup" scrolling="no" data-src="homepage-mockup.html"></iframe></div>
+      </div>
+    </div>
+    <button class="replay" id="homeReplay" type="button">Replay</button>
+  </section>
+
+  <!-- 6. OOH 2 mockups -->
+  <section class="section" id="ooh" aria-label="Out-of-home mockups">
+    <div class="stage">
+      <div class="abs ooh-grid">
+        <figure><div class="art w872 bus"><img src="img/ooh-bus.jpg" alt="Bus side ad: Click. Send. It's in the name." loading="lazy"></div></figure>
+        <figure><div class="art w924 tablet"><img src="img/ooh-tablet-pricing.jpg" alt="Tablet showing the pricing page: Pay for texts, not for months." loading="lazy"></div></figure>
+        <figure><div class="art w872 phone"><img src="img/ooh-phone-pocket.jpg" alt="Phone in a shirt pocket showing the support page: Help from humans, not hold music." loading="lazy"></div></figure>
+        <figure><div class="art w924 billboard"><img src="img/ooh-billboard.jpg" alt="Billboard: From one message, to your millionth." loading="lazy"></div></figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<nav class="dots" id="dots" aria-label="Slides"></nav>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sections = [].slice.call(document.querySelectorAll('.section'));
+  var stages = [].slice.call(document.querySelectorAll('.stage'));
+  var duo = document.getElementById('duo');
+  var cardsLayer = document.getElementById('cards');
+  var cards = [].slice.call(cardsLayer.querySelectorAll('.pcard'));
+  var pillarsIn = document.getElementById('pillarsIn');
+  var CARD_X = [50, 511, 972, 1433];
+  var PILLARS_Y = 90;            // the 900-tall Pillars frame sits centred in a 1080 stage
+  var s = 1, offX = 0, offY = 0, vh = innerHeight, headW = [];
+
+  /* ---------- Fit each 1920×1080 frame to the viewport ---------- */
+  function fit(){
+    var sec = sections[0];
+    var w = sec.clientWidth; vh = sec.clientHeight;
+    s = Math.min(w/1920, vh/1080);
+    offX = (w - 1920*s)/2; offY = (vh - 1080*s)/2;
+    stages.forEach(function(st){
+      st.style.transform = 'translate('+offX+'px,'+offY+'px) scale('+s+')';
+    });
+    cardsLayer.style.transform = 'translate('+offX+'px,'+offY+'px) scale('+s+')';
+    headW = cards.map(function(c){ return c.querySelector('h3 span').offsetWidth; });
+    update();
+  }
+  document.querySelector('#pillars .stage').style.top = '0';
+  // shift Pillars content down so the 900px frame is centred
+  pillarsIn.style.position = 'absolute'; pillarsIn.style.left = '0'; pillarsIn.style.top = PILLARS_Y + 'px';
+  pillarsIn.style.width = '1920px'; pillarsIn.style.height = '900px';
+
+  /* ---------- Cards travel from slide 1 into slide 2 with scroll ---------- */
+  var ease = function(t){ return t<.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; };
+  var clamp = function(v){ return Math.max(0, Math.min(1, v)); };
+  var lerp = function(a,b,t){ return a + (b-a)*t; };
+  function update(){
+    var p = clamp((window.scrollY - duo.offsetTop) / vh);
+    var e = reduce ? (p > .5 ? 1 : 0) : ease(p);
+    // in design px, slide 2's stage starts vh/s below slide 1's stage
+    var top = lerp(540, vh/s + PILLARS_Y + 50, e);
+    var h = lerp(490, 172, e);
+    var bullets = clamp(1 - e/0.45);
+    cards.forEach(function(c,i){
+      c.style.left = CARD_X[i] + 'px';
+      c.style.top = top + 'px';
+      c.style.height = h + 'px';
+      c.querySelector('ul').style.opacity = bullets;
+      c.querySelector('h3 span').style.transform = 'translateX(' + ((357 - headW[i])/2 * e).toFixed(2) + 'px)';
+    });
+    // Pillars content rises in as the cards settle
+    var r = reduce ? (p > .5 ? 1 : 0) : clamp((p - .45)/.55);
+    pillarsIn.style.opacity = r;
+    pillarsIn.style.transform = 'translateY(' + ((1 - ease(r)) * 60).toFixed(1) + 'px)';
+  }
+  var ticking = false;
+  addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; requestAnimationFrame(function(){ ticking = false; update(); }); }
+  }, {passive:true});
+  addEventListener('resize', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  fit();
+
+  /* ---------- Slide-aware media: intro replays, videos restart, mockup loads ---------- */
+  var intro = document.getElementById('introFrame');
+  var home = document.getElementById('homeFrame');
+  /* Homepage mockup: loads early but only starts typing once its slide is in view; Replay restarts it */
+  var homeVisible = false, homeLoaded = false, homeStarted = false;
+  function startHome(){
+    if (homeStarted) return;
+    homeStarted = true; post(home, {cs:'start'});
+  }
+  function reloadHome(){
+    homeLoaded = false; homeStarted = false;
+    post(home, {cs:'reload'});
+  }
+  // Keep the mockup top-aligned in its browser frame: undo any scroll on the frame's wrappers or inside the mockup
+  var homeWrappers = [home.parentElement, home.parentElement.parentElement, home.closest('.stage'), document.getElementById('homepage')];
+  homeWrappers.forEach(function(el){
+    el.addEventListener('scroll', function(){ if (el.scrollTop || el.scrollLeft){ el.scrollTop = 0; el.scrollLeft = 0; } }, {passive:true});
+  });
+  function pinHome(){
+    homeWrappers.forEach(function(el){ el.scrollTop = 0; el.scrollLeft = 0; });
+    post(home, {cs:'pin'});
+  }
+  home.addEventListener('load', function(){
+    pinHome();
+    homeLoaded = true; homeStarted = false;
+    if (homeVisible) startHome();
+  });
+  function enterHome(){
+    homeVisible = true; pinHome();
+    if (!home.getAttribute('src')) home.setAttribute('src', home.dataset.src);
+    else if (homeLoaded && !homeStarted) startHome();
+    else if (homeLoaded) reloadHome();
+  }
+  document.getElementById('homeReplay').addEventListener('click', reloadHome);
+  function post(frame, msg){ try { frame.contentWindow.postMessage(msg, '*'); } catch(e){} }
+  function playIntro(){
+    if (!intro.getAttribute('src')) intro.setAttribute('src', intro.dataset.src);
+    else post(intro, {cs:'reload'});
+  }
+  var videos = [].slice.call(document.querySelectorAll('video'));
+  if (reduce) videos.forEach(function(v){ v.removeAttribute('autoplay'); v.pause(); });
+
+  var current = -1;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      var sec = en.target, idx = sections.indexOf(sec);
+      if (en.isIntersecting){
+        setCurrent(idx);
+        if (sec.id === 'reveal') playIntro();
+        if (sec.id === 'homepage') enterHome();
+        if (!reduce) sec.querySelectorAll('video').forEach(function(v){ v.currentTime = 0; v.play().catch(function(){}); });
+      } else {
+        if (sec.id === 'homepage') homeVisible = false;
+        sec.querySelectorAll('video').forEach(function(v){ v.pause(); });
+      }
+    });
+  }, {threshold:0.6});
+  sections.forEach(function(sec){ io.observe(sec); });
+  // preload the homepage mockup shortly after the deck opens so it is ready when reached
+  setTimeout(function(){ if (!home.getAttribute('src')) home.setAttribute('src', home.dataset.src); }, 1500);
+
+  /* Let Clicky's eyes on the homepage follow the cursor anywhere on that slide */
+  document.getElementById('homepage').addEventListener('pointermove', function(e){
+    var r = home.getBoundingClientRect(), k = r.width / home.offsetWidth;
+    post(home, {cs:'point', x:(e.clientX - r.left)/k, y:(e.clientY - r.top)/k});
+  }, {passive:true});
+  document.getElementById('homepage').addEventListener('pointerleave', function(){
+    post(home, {cs:'leave'});
+  });
+
+  /* ---------- Problem tags follow the ad showing in each video ----------
+     Each clip shows two ads; the tag changes at the cut (~4.9s). The poster is the last frame,
+     so before playback the tag shows the second ad's problem. */
+  videos.forEach(function(v){
+    var tags; try { tags = JSON.parse(v.dataset.tags || '[]'); } catch(e){ tags = []; }
+    var label = v.parentElement.querySelector('.tag .v'); if (!label || !tags.length) return;
+    var shown = label.textContent, timer = null;
+    function want(){
+      if (v.paused && v.currentTime === 0) return tags[tags.length - 1][1];
+      var t = v.currentTime, l = tags[0][1];
+      tags.forEach(function(x){ if (t >= x[0]) l = x[1]; });
+      return l;
+    }
+    function sync(){
+      var l = want();
+      if (l !== shown){
+        shown = l; label.classList.add('swap'); clearTimeout(timer);
+        timer = setTimeout(function(){ label.textContent = l; label.classList.remove('swap'); }, 200);
+      }
+      if (!v.paused) requestAnimationFrame(sync);
+    }
+    v.addEventListener('play', function(){ requestAnimationFrame(sync); });
+    v.addEventListener('seeked', sync);
+    v.addEventListener('pause', sync);
+  });
+
+  /* ---------- Navigation: dots + keyboard ---------- */
+  var dots = document.getElementById('dots');
+  sections.forEach(function(sec, i){
+    var b = document.createElement('button');
+    b.type = 'button'; b.setAttribute('aria-label', 'Go to slide ' + (i+1) + ': ' + sec.getAttribute('aria-label'));
+    b.addEventListener('click', function(){ go(i); });
+    dots.appendChild(b);
+  });
+  function setCurrent(i){
+    current = i;
+    [].forEach.call(dots.children, function(b, j){ b.setAttribute('aria-current', j === i ? 'true' : 'false'); });
+  }
+  function nearest(){
+    var y = window.scrollY, best = 0, bd = Infinity;
+    sections.forEach(function(sec, i){ var d = Math.abs(sec.offsetTop - y); if (d < bd){ bd = d; best = i; } });
+    return best;
+  }
+  /* Keyboard/clicker navigation: an eased, fixed-length scroll so transitions (like the cards
+     travelling from slide 1 to slide 2) play at the same pace every time, in every browser.
+     Presses during a move queue onto the slide being moved to, so nothing gets skipped or doubled. */
+  var target = null, anim = null, root = document.documentElement;
+  function go(i){
+    i = Math.max(0, Math.min(sections.length - 1, i));
+    target = i;
+    var from = window.scrollY, to = sections[i].offsetTop, dist = to - from;
+    if (anim) cancelAnimationFrame(anim);
+    if (reduce || Math.abs(dist) < 2){ window.scrollTo(0, to); target = null; return; }
+    var dur = Math.min(1400, 700 + Math.abs(dist) / vh * 250), t0 = performance.now();
+    root.style.scrollSnapType = 'none'; root.style.scrollBehavior = 'auto';
+    (function step(now){
+      var t = Math.min(1, (now - t0) / dur);
+      window.scrollTo(0, from + dist * ease(t));
+      if (t < 1) anim = requestAnimationFrame(step);
+      else { anim = null; target = null; root.style.scrollSnapType = ''; root.style.scrollBehavior = ''; }
+    })(t0);
+  }
+  function fullscreen(){
+    try {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else if (root.requestFullscreen) { var r = root.requestFullscreen(); if (r && r.catch) r.catch(function(){}); }
+    } catch(e){}
+  }
+  function handleKey(k, shift, prevent){
+    var base = target != null ? target : nearest();
+    if (k === 'ArrowDown' || k === 'PageDown' || (k === ' ' && !shift) || k === 'ArrowRight'){ prevent(); go(base + 1); }
+    else if (k === 'ArrowUp' || k === 'PageUp' || (k === ' ' && shift) || k === 'ArrowLeft'){ prevent(); go(base - 1); }
+    else if (k === 'Home'){ prevent(); go(0); }
+    else if (k === 'End'){ prevent(); go(sections.length - 1); }
+    else if (k === 'f' || k === 'F'){ prevent(); fullscreen(); }
+  }
+  addEventListener('keydown', function(e){
+    if (e.target.closest && e.target.closest('input,textarea,select')) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    handleKey(e.key, e.shiftKey, function(){ e.preventDefault(); });
+  });
+  // Keys pressed while focus is inside an embedded slide (after clicking it) are passed up from there
+  addEventListener('message', function(e){
+    var d = e.data || {};
+    if (d.cs === 'key') handleKey(d.key, d.shift, function(){});
+  });
+  setCurrent(0);
+})();
+</script>
+
+</body>
+</html>

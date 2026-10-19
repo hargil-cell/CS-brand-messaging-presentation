@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Click. Send. — Intro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800&display=swap" rel="stylesheet">
+<style>
+  /* Figma: Brand messaging › Slide 16:9 - 1 (1920×1080), scaled to fit the window */
+  :root{ --brand-900:#15203B; --bg-primary:#0C162B; --caret:#F0F3F5; }
+  html,body{ margin:0; height:100%; background:var(--brand-900); overflow:hidden; }
+  .viewport{ position:fixed; inset:0; }
+  .slide{ position:absolute; left:50%; top:50%; width:1920px; height:1080px; background:var(--brand-900); transform-origin:center; }
+  .panel{ position:absolute; left:50px; top:50px; width:1820px; height:980px; border-radius:24px; background:var(--bg-primary); }
+
+  /* Headline row: text + 54px gap + Clicky, centred as one group (matches the Figma positions) */
+  .row{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:54px; }
+  .headline{
+    position:relative; margin:0; color:#fff; white-space:nowrap;
+    font-family:"Power Grotesk", Archivo, system-ui, sans-serif; font-weight:800; font-stretch:125%;
+    font-size:152px; line-height:1; letter-spacing:-3.04px; transform:translateY(6px);
+  }
+  .headline .sizer{ visibility:hidden; }                /* reserves the final width so nothing shifts while typing */
+  .headline .live{ position:absolute; left:0; top:0; }
+  .caret{
+    display:inline-block; width:.15em; height:1.02em; margin-left:.08em; vertical-align:-.12em;
+    background:var(--caret); border-radius:2px;
+  }
+  .caret.off{ opacity:0; }
+  .caret.gone{ display:none; }
+
+  .clicky-wrap{ width:297px; flex:none; opacity:0; transform-origin:0% 100%; }
+  /* Smooth entrance that carries on the typing's left-to-right direction:
+     glides in from the end of the headline with a soft fade and gentle grow, one long ease-out */
+  .clicky-wrap.in{ animation:appear .8s cubic-bezier(.22,1,.36,1) forwards; }
+  @keyframes appear{
+    0%  { opacity:0; transform:translateX(-36px) scale(.92); }
+    60% { opacity:1; }
+    100%{ opacity:1; transform:translateX(0) scale(1); }
+  }
+  .clicky{ width:100%; height:auto; aspect-ratio:176/90; display:block; overflow:visible; }
+
+  .replay{
+    position:fixed; right:16px; bottom:16px; font:500 13px system-ui,sans-serif; color:#C9D3E8;
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:999px;
+    padding:6px 14px; cursor:pointer; opacity:0; transition:opacity .2s;
+  }
+  body:hover .replay{ opacity:1; }
+  .replay:hover{ border-color:#FFB829; color:#FFB829; }
+
+  @media (prefers-reduced-motion: reduce){ .clicky-wrap{ opacity:1; } .clicky-wrap.in{ animation:none; } }
+</style>
+</head>
+<body>
+<div class="viewport">
+  <div class="slide" id="slide">
+    <div class="panel"></div>
+    <div class="row">
+      <h1 class="headline" aria-label="Click. Send.">
+        <span class="sizer" aria-hidden="true">Click. Send.</span>
+        <span class="live" aria-hidden="true"><span id="typed"></span><span class="caret" id="caret"></span></span>
+      </h1>
+      <div class="clicky-wrap" id="clickyWrap">
+        <svg class="clicky" viewBox="0 0 176 90" aria-hidden="true">
+    <g class="pose">
+      <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFB829" d="M130.333 0C155.186 0.000200987 175.333 20.1473 175.333 45C175.333 69.8527 155.186 89.9998 130.333 90H45.5947C37.9874 90 30.8227 88.1089 24.54 84.7764C24.4421 84.725 24.3445 84.6731 24.2471 84.6211C24.1891 84.5898 24.131 84.5589 24.0732 84.5273C23.7474 84.3515 23.4225 84.1736 23.1016 83.9902C18.0373 85.84 12.2895 87.6585 6.63965 88.9531C3.42917 89.6885 0.554627 86.9694 1.19824 83.7588C2.37033 77.9136 4.18694 72.0511 6.12305 66.9834C2.43565 60.4818 0.333008 52.9822 0.333008 45C0.333008 27.8814 9.99812 12.9959 24.2256 5.38867C30.5828 1.95187 37.8607 2.19345e-05 45.5947 0H130.333Z"/>
+      <g class="lid">
+        <path fill="#fff" d="M81.4999 45C81.4999 56.0029 72.5804 64.9224 61.5775 64.9224H61.1348C50.1319 64.9224 41.2124 56.0029 41.2124 45C41.2124 33.9971 50.1319 25.0776 61.1348 25.0776H61.5775C72.5804 25.0776 81.4999 33.9971 81.4999 45Z"/>
+        <circle class="pupil" cx="61.3" cy="45" r="10.6" fill="#15203B"/>
+      </g>
+      <g class="lid">
+        <path fill="#fff" d="M133.788 45C133.788 56.0029 124.868 64.9224 113.865 64.9224H113.422C102.42 64.9224 93.5 56.0029 93.5 45C93.5 33.9971 102.42 25.0776 113.422 25.0776H113.865C124.868 25.0776 133.788 33.9971 133.788 45Z"/>
+        <circle class="pupil" cx="113.6" cy="45" r="10.6" fill="#15203B"/>
+      </g>
+      <!-- Wink arc (the closed right eye), hidden until a wink -->
+      <path class="wink-arc" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity="0" d="M98 46Q113.6 46 129.2 46"/>
+    </g>
+  </svg>
+      </div>
+    </div>
+  </div>
+</div>
+<button class="replay" onclick="location.reload()">Replay</button>
+<script>addEventListener('message', function(e){ if (e.data && e.data.cs === 'reload') location.reload(); });</script>
+
+<script>
+/* ---------- Fit the 1920×1080 frame to the window ---------- */
+(function(){
+  var slide = document.getElementById('slide');
+  function fit(){ var s = Math.min(innerWidth/1920, innerHeight/1080); slide.style.transform = 'translate(-50%,-50%) scale('+s+')'; }
+  addEventListener('resize', fit); fit();
+})();
+</script>
+
+<script>
+/* ---------- Clicky: idle float + breathe, eye scanning, blinks and wink ---------- */
+(function(){
+  var svg   = document.querySelector('.clicky');
+  var pose  = svg.querySelector('.pose');
+  var lids  = [].slice.call(svg.querySelectorAll('.lid'));
+  var pupils= [].slice.call(svg.querySelectorAll('.pupil'));
+  var arc   = svg.querySelector('.wink-arc');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // float distance scaled from the mockup's 160px Clicky to this frame's 297px Clicky
+  var AMP = 297/160;
+  var SOCKETS = [{x:61.3,y:45},{x:113.6,y:45}];
+  var MAX_TRAVEL = 20.14 - 10.60;          // same socket clamp as the mockup
+  var wait = function(ms){ return new Promise(function(r){ setTimeout(r, ms); }); };
+  var rand = function(a,b){ return a + Math.random()*(b-a); };
+  var ease = {
+    out:   function(t){ return 1 - Math.pow(1-t,3); },
+    inOut: function(t){ return t<.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; },
+    back:  function(t){ var c=1.6; return 1 + (c+1)*Math.pow(t-1,3) + c*Math.pow(t-1,2); }
+  };
+  function tween(dur, fn){
+    return new Promise(function(res){
+      var s = performance.now();
+      (function step(now){
+        var t = Math.min(1, (now - s)/dur); fn(t);
+        if (t < 1) requestAnimationFrame(step); else res();
+      })(s);
+    });
+  }
+
+  /* ---------- Lids: per-eye squash (scaleY around an origin line) ---------- */
+  function setLid(i, s, oy){
+    oy = oy == null ? 45 : oy;
+    lids[i].setAttribute('transform','translate(0 '+(oy*(1-s)).toFixed(2)+') scale(1 '+s.toFixed(3)+')');
+  }
+
+  /* ---------- Eyes: scan around every now and then ----------
+     Pupils move as a rigid pair (like the cursor-tracking rules), clamped to the socket.
+     Quick saccade to a new spot, a hold, plus a tiny drift so they never look frozen. */
+  var gaze = {x:-4.47, y:8.44}, cur = {x:-4.47, y:8.44}, SMOOTH = 0.2;   // starts at the mockup's down-left rest
+  function clamp(p){ var m=Math.hypot(p.x,p.y); return m<=MAX_TRAVEL ? p : {x:p.x/m*MAX_TRAVEL, y:p.y/m*MAX_TRAVEL}; }
+  // every look goes all the way to the edge of the whites (same as the mockup's cursor tracking)
+  var lastLook = 0;
+  function look(x,y){ lastLook = performance.now(); var m=Math.hypot(x,y)||1; gaze = {x:x/m*MAX_TRAVEL, y:y/m*MAX_TRAVEL}; }
+  var SPOTS = [
+    [-9, 17], [-9, 17],            // resting glance down-left (mockup default) — weighted
+    [-6.5, 0.5], [6.5, 0.5],       // left / right
+    [-5, -4], [5, -4],             // up-left / up-right
+    [5.5, 4.5]                     // down-right
+  ];
+  (function eyes(){
+    var t = performance.now()/1000;
+    var k = busy ? 0 : 1;                                        // pupils hold perfectly still during a wink
+    var dx = Math.sin(t*0.9)*0.25*k, dy = Math.cos(t*1.3)*0.2*k; // micro drift
+    var tgt = clamp({x:gaze.x + dx, y:gaze.y + dy});            // drift never pushes past the edge
+    cur.x += (tgt.x - cur.x)*SMOOTH; cur.y += (tgt.y - cur.y)*SMOOTH;
+    pupils.forEach(function(p,i){ p.setAttribute('cx', (SOCKETS[i].x+cur.x).toFixed(2)); p.setAttribute('cy', (SOCKETS[i].y+cur.y).toFixed(2)); });
+    requestAnimationFrame(eyes);
+  })();
+
+  var busy = false;   // true while winking so blinks/scans don't collide
+
+  // Pupils count as settled once they've stopped travelling and have held the spot for a beat
+  function settled(){
+    return performance.now() - lastLook > 550 && Math.hypot(gaze.x - cur.x, gaze.y - cur.y) < 0.5;
+  }
+  async function waitUntilSettled(){
+    while (!settled()) await wait(30);
+  }
+
+  async function lookAround(){
+    if (busy) return;
+    look(-6.5, 0.5); await wait(rand(450,650));
+    if (busy) return;                      // a wink is waiting: stop mid-sequence and hold still
+    look(6.5, 0.5);  await wait(rand(550,800));
+    if (busy) return;
+    look(-9, 17);
+  }
+
+  async function scanLoop(){
+    while (true){
+      await wait(rand(1600, 3800));
+      if (busy) continue;
+      if (Math.random() < 0.25) { await lookAround(); continue; }
+      var s = SPOTS[Math.floor(Math.random()*SPOTS.length)];
+      look(s[0], s[1]);
+    }
+  }
+
+  /* ---------- Blink: quick lid close on both eyes (same as the mockup) ---------- */
+  function blinkOnce(){
+    return tween(160, function(t){
+      var s = t < .5 ? 1 - t*2*0.92 : 0.08 + (t-.5)*2*0.92;
+      setLid(0, s); setLid(1, s);
+    }).then(function(){ setLid(0,1); setLid(1,1); });
+  }
+
+  /* ---------- Wink (from the reference recording) ----------
+     1. Scanning pauses and the pupils must be settled (landed + held ~0.5s) before anything moves.
+     2. Right eye squashes down from the top (~90ms) and snaps into a happy ∩ arc.
+     3. Body leans in a touch and squashes; the open eye squints slightly with the cheek.
+     4. Arc holds (~400ms), flattens, then the eye pops back open with a little overshoot. */
+  var poseState = {r:0, sx:1, sy:1};
+  function setPose(r, sx, sy){
+    poseState = {r:r, sx:sx, sy:sy};
+    // pivot at the base of the bubble, between the eyes
+    pose.setAttribute('transform','translate(88 90) rotate('+r.toFixed(2)+') scale('+sx.toFixed(4)+' '+sy.toFixed(4)+') translate(-88 -90)');
+  }
+  function setArc(h, op){
+    // ∩ arc across the right eye; h = how high the middle lifts
+    arc.setAttribute('d','M98.5 47Q113.6 '+(47 - h*2).toFixed(2)+' 128.7 47');
+    arc.setAttribute('opacity', op);
+  }
+  function lerp(a,b,t){ return a + (b-a)*t; }
+
+  async function wink(){
+    if (busy) return; busy = true;
+    // busy now blocks any new scans; wait for the pupils to land and hold before winking
+    await waitUntilSettled();
+
+    // close: lid squashes toward the lower part of the eye; body leans in
+    await tween(90, function(t){
+      var e = ease.out(t);
+      setLid(1, lerp(1, 0.22, e), 60);
+      setLid(0, lerp(1, 0.93, e));         // cheek squint on the open eye
+      setPose(lerp(0,-3.2,e), lerp(1,1.015,e), lerp(1,0.97,e));
+    });
+    lids[1].setAttribute('opacity','0');
+    // arc pops up with a small overshoot
+    await tween(140, function(t){ setArc(lerp(2.5, 7.5, ease.back(t)), 1); });
+
+    await wait(rand(340, 440));            // hold the wink
+
+    // flatten the arc, then reopen
+    await tween(90, function(t){ setArc(lerp(7.5, 2, ease.inOut(t)), 1); });
+    setArc(2, 0);
+    lids[1].removeAttribute('opacity');
+    await tween(220, function(t){
+      var e = ease.back(t);
+      setLid(1, lerp(0.2, 1, e), 45);
+      setLid(0, lerp(0.93, 1, ease.out(t)));
+      setPose(lerp(-3.2,0,ease.back(t)), lerp(1.015,1,ease.out(t)), lerp(0.97,1,ease.back(t)));
+    });
+    setLid(0,1); setLid(1,1); setPose(0,1,1);
+    await wait(300);
+    look(-9, 17);                       // drift back to resting glance
+    busy = false;
+  }
+
+  async function blinkLoop(){
+    var since = 0;
+    while (true){
+      await wait(rand(2500, 6000));
+      if (busy) continue;
+      since++;
+      // every few blinks, wink instead (roughly every 10–20s)
+      if (since >= 3 && Math.random() < 0.45) { since = 0; await wink(); continue; }
+      await blinkOnce();
+      if (Math.random() < 0.2) { await wait(120); await blinkOnce(); }
+    }
+  }
+
+  /* ---------- Float + breathe (unchanged from the mockup) ---------- */
+  window.clickyLook = look;
+  var started = false;
+  window.clickyStart = function(){
+    if (started || reduce) return; started = true;
+    var visible = true;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(en){ visible = en[0].isIntersecting; }).observe(svg);
+    }
+    svg.style.transformOrigin = '50% 100%';
+    var phase = 0, period = 4000, prev = performance.now();
+    var fPhase = 0, fPeriod = 6000, fAmp = 3;
+    function newFloat(){ fPeriod = 5600 + Math.random()*1600; fAmp = 3.5 + Math.random()*1; }
+    function newPeriod(){ return 3600 + Math.random()*1000; }
+    newFloat(); period = newPeriod();
+    (function breathe(now){
+      var dt = Math.min(64, now - prev); prev = now;
+      if (visible) {
+        phase += dt/period;  if (phase >= 1) { phase -= 1; period = newPeriod(); }
+        fPhase += dt/fPeriod; if (fPhase >= 1) { fPhase -= 1; newFloat(); }
+        var lift = -fAmp * AMP * (1 - Math.cos(fPhase*Math.PI*2))/2;
+        var b = (1 - Math.cos(phase*Math.PI*2))/2;
+        svg.style.transform = 'translateY('+lift.toFixed(2)+'px) scale('+(1 - b*0.012).toFixed(4)+','+(1 + b*0.04).toFixed(4)+')';
+      }
+      requestAnimationFrame(breathe);
+    })(prev);
+
+    scanLoop();
+    blinkLoop();
+    setTimeout(wink, 1300);   // first wink shortly after Clicky appears
+  };
+
+})();
+
+</script>
+
+<script>
+/* ---------- Sequence: type "Click. Send." then Clicky pops in ----------
+   Typewriter timing matches the homepage mockup: uneven ~64ms rhythm per keystroke,
+   caret blinking 400ms on / 400ms off throughout. */
+(function(){
+  var TEXT = "Click. Send.";
+  var RHYTHM = [33,67,33,100,33,67,133,33,67,33,100,67];
+  var BLINK = 400, LEAD_IN = 900, BEAT = 520, MID_PAUSE = 420;  // MID_PAUSE: beat between "Click." and "Send."
+  var typed = document.getElementById('typed'), caret = document.getElementById('caret');
+  var wrap = document.getElementById('clickyWrap');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var wait = function(ms){ return new Promise(function(r){ setTimeout(r, ms); }); };
+
+  if (reduce) { typed.textContent = TEXT; caret.classList.add('gone'); return; }
+
+  var blinker = setInterval(function(){ caret.classList.toggle('off'); }, BLINK);
+
+  (async function run(){
+    await (document.fonts ? document.fonts.ready : Promise.resolve());
+    await wait(LEAD_IN);                                   // empty line, caret blinking
+    for (var i = 1; i <= TEXT.length; i++) {
+      typed.textContent = TEXT.slice(0, i);
+      caret.classList.remove('off');                       // caret stays solid on each keystroke
+      await wait(RHYTHM[(i-1) % RHYTHM.length]);
+      if (TEXT.slice(0, i) === "Click.") await wait(MID_PAUSE);
+    }
+    await wait(BEAT);                                      // short beat on the finished line
+    clearInterval(blinker); caret.classList.add('gone');
+    window.clickyLook(17, -1);                             // eyes lead to the right as he glides in
+    wrap.classList.add('in');                              // Clicky pops in from his speech tail
+    await wait(500);
+    window.clickyStart();                                  // hand over to the idle loop (float, breathe, scan, blink, wink)
+  })();
+})();
+</script>
+<script>addEventListener('keydown', function(e){
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  var nav = ['ArrowDown','ArrowUp','ArrowLeft','ArrowRight','PageDown','PageUp',' ','Home','End','f','F'];
+  if (window.parent !== window && nav.indexOf(e.key) > -1){ e.preventDefault(); window.parent.postMessage({cs:'key', key:e.key, shift:e.shiftKey}, '*'); }
+});</script>
+</body>
+</html>
