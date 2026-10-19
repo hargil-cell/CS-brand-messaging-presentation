@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,400;125,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,800&display=swap" rel="stylesheet">
 <style>
 /* Layout: six 1920×1080 Figma frames, each scaled to fit one viewport-height section; scroll snaps between them.
    Single dark/light look taken straight from the Figma file (ClickSend design tokens), so no theme switching. */
@@ -46,6 +46,75 @@ p,ul,ol{margin:0;padding:0}
 .b-lg{font-family:var(--body);font-size:24px;line-height:1.4;font-variation-settings:"opsz" 14}
 .abs{position:absolute}
 .row{display:flex;gap:24px;align-items:center}
+
+/* ---------- Intro ---------- */
+#intro{background:var(--brand-900)}
+.intro-panel{left:50px;top:50px;width:1820px;height:980px;border-radius:24px;background:var(--brand-950);overflow:hidden}
+.intro-group{position:absolute;left:460px;top:338px;width:901px;display:flex;flex-direction:column;align-items:center;gap:64px;text-align:center}
+.intro-logo{display:block;width:594px;height:113px}
+.intro-text{display:flex;flex-direction:column;align-items:center;gap:24px;width:100%}
+.intro-text h1{margin:0;color:var(--text-primary);white-space:nowrap}
+.intro-sub{font-family:var(--body);font-size:30px;line-height:44px;letter-spacing:-0.6px;color:#C4CCD1;font-optical-sizing:auto}
+/* Clicky peeks in from the top-right corner of the panel, partly cropped by it (Figma: 250 wide at 1602, -16) */
+.intro-clicky{position:absolute;left:1602px;top:-16px;width:250px;height:auto;aspect-ratio:176/90;overflow:visible}
+
+/* ---------- New opening slides ---------- */
+#why{background:var(--brand-950)}
+#culture{background:var(--neutral-200)}
+#market{background:#C4CCD1}
+.d-lg{font-size:48px;line-height:60px;letter-spacing:-0.96px}
+.slide-title{left:50px;top:50px;margin:0;white-space:nowrap}
+#why .slide-title{color:var(--text-primary)}
+#culture .slide-title,#market .slide-title{color:var(--brand-950)}
+
+/* Why anyone picks us? */
+.compare{left:50px;top:342px;width:1819px;display:flex;flex-direction:column;align-items:flex-end;gap:24px;color:var(--neutral-200)}
+.compare .row{width:100%;align-items:stretch}
+.compare .head{width:auto}
+.compare .cell{border-radius:16px;padding:24px 40px;display:flex;align-items:center;justify-content:center;text-align:center}
+.compare .label{width:437px;flex:none;background:var(--brand-900)}
+.compare .now{background:var(--brand-800)}
+.compare .next{background:#1750C2}
+.compare .row:not(.head) .now,.compare .row:not(.head) .next{flex:1;min-width:0}
+.compare .head .cell{width:667px}
+
+/* The culture effect */
+.culture{left:50px;top:50px;width:1820px;height:980px;display:flex;align-items:flex-end;justify-content:space-between}
+.culture .left{width:843px;display:flex;flex-direction:column;gap:24px}
+.stats{display:flex;gap:25px;color:var(--text-primary)}
+.stat{background:var(--brand-950);border-radius:16px;padding:24px 40px;display:flex;gap:32px;align-items:center;justify-content:center}
+.stat .num{white-space:nowrap}
+.stat .what{font-family:var(--display);font-weight:400;font-stretch:125%;font-size:24px;line-height:32px;white-space:nowrap}
+.panel{border-radius:16px;padding:24px 40px;display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;color:var(--text-primary)}
+.panel.p1{background:var(--brand-900)}
+.panel.p2{background:var(--brand-800)}
+.panel.p3{background:#1750C2}
+.merch{width:953px;height:100%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:24px}
+.merch figure{margin:0;border-radius:24px;overflow:hidden;background:#E9E9E9}
+.merch img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* The market */
+.market{left:136px;top:108px;width:1648px;display:flex;flex-direction:column;align-items:flex-end;gap:16px}
+.market .cols{display:flex;gap:47px;align-items:flex-end;width:100%}
+.market .col{display:flex;flex-direction:column;gap:16px}
+.market .col.l{width:801px}
+.market .col.r{width:800px}
+.quote{background:#272F36;border-radius:16px;padding:32px 40px;display:flex;flex-direction:column;gap:32px}
+.quote.short{min-height:172px}
+.quote .top{display:flex;justify-content:space-between;align-items:center}
+.quote .dots3{display:flex;gap:12px}
+.quote .dots3 i{width:18px;height:18px;border-radius:50%;background:#4B575E}
+.quote img{display:block;height:32px;width:auto}
+.quote p{margin:0;font-family:var(--body);font-weight:800;font-size:36px;line-height:44px;letter-spacing:-0.72px;color:#C4CCD1;font-optical-sizing:auto}
+.complaints-bar{width:100%;background:#4B575E;border-radius:12px;padding:8px 40px;text-align:center;color:var(--neutral-200)}
+.complaints{display:flex;gap:24px;width:100%}
+.complaint{flex:1;min-width:0;background:#4B575E;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:8px;text-align:center}
+.complaint h3{margin:0;font-family:var(--display);font-weight:800;font-stretch:125%;font-size:24px;line-height:32px;color:var(--text-primary)}
+.complaint p{color:#C4CCD1}
+
+/* Market cascade: cards fade and rise in, top to bottom, each time the slide comes into view */
+.armed .cascade{opacity:0;transform:translateY(24px)}
+.armed.in .cascade{opacity:1;transform:none;transition:opacity .6s ease-out,transform .7s cubic-bezier(.22,1,.36,1);transition-delay:var(--d,0ms)}
 
 /* ---------- 1. Audience ---------- */
 .aud-top{left:50px;top:50px;width:1820px}
@@ -146,6 +215,117 @@ p,ul,ol{margin:0;padding:0}
 </svg>
 
 <main>
+  <!-- Intro -->
+  <section class="section" id="intro" aria-label="Intro">
+    <div class="stage">
+      <div class="abs intro-panel">
+      <svg class="intro-clicky" id="introClicky" viewBox="0 0 176 90" aria-hidden="true">
+        <g class="body">
+          <path fill-rule="evenodd" clip-rule="evenodd" fill="#FFB829" d="M130.333 0C155.186 0.000200987 175.333 20.1473 175.333 45C175.333 69.8527 155.186 89.9998 130.333 90H45.5947C37.9874 90 30.8227 88.1089 24.54 84.7764C24.4421 84.725 24.3445 84.6731 24.2471 84.6211C24.1891 84.5898 24.131 84.5589 24.0732 84.5273C23.7474 84.3515 23.4225 84.1736 23.1016 83.9902C18.0373 85.84 12.2895 87.6585 6.63965 88.9531C3.42917 89.6885 0.554627 86.9694 1.19824 83.7588C2.37033 77.9136 4.18694 72.0511 6.12305 66.9834C2.43565 60.4818 0.333008 52.9822 0.333008 45C0.333008 27.8814 9.99812 12.9959 24.2256 5.38867C30.5828 1.95187 37.8607 2.19345e-05 45.5947 0H130.333Z"/>
+          <g class="lid"><path fill="#fff" d="M81.4999 45C81.4999 56.0029 72.5804 64.9224 61.5775 64.9224H61.1348C50.1319 64.9224 41.2124 56.0029 41.2124 45C41.2124 33.9971 50.1319 25.0776 61.1348 25.0776H61.5775C72.5804 25.0776 81.4999 33.9971 81.4999 45Z"/><circle class="pupil" cx="56.83" cy="53.44" r="10.6" fill="#15203B"/></g>
+          <g class="lid"><path fill="#fff" d="M133.788 45C133.788 56.0029 124.868 64.9224 113.865 64.9224H113.422C102.42 64.9224 93.5 56.0029 93.5 45C93.5 33.9971 102.42 25.0776 113.422 25.0776H113.865C124.868 25.0776 133.788 33.9971 133.788 45Z"/><circle class="pupil" cx="109.13" cy="53.44" r="10.6" fill="#15203B"/></g>
+        </g>
+      </svg>
+        <div class="intro-group">
+          <svg class="intro-logo" viewBox="0 0 368 70" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sinch ClickSend">
+<path d="M68.3506 18.2834C74.8681 18.3427 80.387 18.5179 83.3877 18.6867C86.9878 18.89 90.383 22.2775 90.748 26.089C90.9936 28.6386 91.2061 34.0819 91.2061 38.8039C91.2061 43.5248 90.9934 48.9696 90.7471 51.5187C90.3822 55.3303 86.9876 58.7165 83.3877 58.9201C82.4323 58.9727 81.2205 59.0279 79.8047 59.0803V67.6476C79.8007 68.1733 79.5889 68.6763 79.2148 69.0451C78.8408 69.4138 78.3355 69.618 77.8105 69.6144C77.3483 69.615 76.8995 69.4566 76.54 69.1652L63.8447 59.3439C55.4175 59.3439 47.9727 59.1253 44.3018 58.9201C40.7019 58.7166 37.3063 55.3302 36.9414 51.5187C36.9052 51.1379 36.869 50.6917 36.835 50.1945C44.571 50.1289 51.288 49.9185 54.9795 49.7111C61.4365 49.3503 67.2104 43.6279 67.8516 36.9572C68.1865 33.4492 68.4053 27.901 68.4053 22.8273C68.4053 21.3325 68.3873 19.7966 68.3506 18.2834ZM31.9209 0.0050602C41.7515 0.0050602 50.4395 0.260526 54.7217 0.500177C58.9193 0.737536 62.8819 4.6881 63.3086 9.13397C63.3453 9.50605 63.3793 9.91245 63.4131 10.3508C63.42 10.4491 63.4272 10.5493 63.4365 10.6496C63.4615 11.001 63.4886 11.3686 63.5117 11.7541C63.5232 11.9179 63.532 12.0853 63.5439 12.2541C63.5943 13.112 63.6426 14.0434 63.6836 15.0314C63.6905 15.2094 63.6972 15.3879 63.7041 15.5705C63.7611 17.0458 63.8044 18.6311 63.8252 20.2746C63.8273 20.4342 63.8299 20.5938 63.832 20.756C63.8344 21.055 63.8389 21.3587 63.8389 21.6623C63.8413 21.8562 63.8408 22.0504 63.8408 22.2443C63.8408 22.4383 63.8447 22.632 63.8447 22.8283C63.8447 28.3359 63.5964 33.5456 63.3115 36.5217C62.8857 40.9677 58.9225 44.9179 54.7246 45.1555C54.2758 45.1805 53.7784 45.2058 53.2383 45.2306C52.894 45.2467 52.531 45.2643 52.1523 45.2795C51.7855 45.2955 51.4045 45.3091 51.0078 45.3254C50.8441 45.3299 50.684 45.336 50.5166 45.343C50.3495 45.3499 50.182 45.3546 50.0088 45.3615C49.8452 45.366 49.6812 45.3702 49.5176 45.3771H49.4844C49.3089 45.3841 49.1282 45.389 48.9482 45.3957C48.9234 45.3978 48.9004 45.3976 48.8779 45.3976L48.2197 45.4181C45.3239 45.5049 41.9006 45.5784 38.1748 45.6174L36.6035 45.6301C35.7966 45.6394 34.9753 45.6443 34.1455 45.6467C33.8036 45.6488 33.4573 45.6486 33.1104 45.6486C32.7173 45.651 32.3188 45.6515 31.9199 45.6515L17.4102 56.5646C16.9964 56.8885 16.4862 57.0642 15.9609 57.0627C15.369 57.075 14.7957 56.8515 14.3682 56.4416C13.9408 56.0317 13.6938 55.4685 13.6807 54.8762V45.3566C11.8635 45.2926 10.3195 45.2263 9.12012 45.1564C4.9227 44.9189 0.959801 40.9683 0.533203 36.5226C0.248256 33.5462 0 28.3379 0 22.8283C9.91214e-07 17.3188 0.248257 12.1102 0.533203 9.13397C0.959061 4.68813 4.92233 0.737613 9.12012 0.500177C13.4021 0.260526 22.09 0.00506793 31.9209 0.0050602Z" fill="#2977FF"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M114.691 0.0127857C115.394 -0.00113948 116.091 0.139333 116.733 0.424895C117.295 0.674516 117.776 1.07596 118.123 1.58407C118.467 2.11366 118.655 2.73053 118.664 3.3624H116.389C116.38 2.9539 116.21 2.56535 115.918 2.28036C115.751 2.11729 115.552 1.99058 115.333 1.90927C115.114 1.82804 114.881 1.79328 114.648 1.80771C114.232 1.78827 113.821 1.90962 113.481 2.15146C113.324 2.27287 113.198 2.4313 113.116 2.6124C113.054 2.7483 113.019 2.89395 113.009 3.04208V3.31747C113.017 3.44437 113.044 3.56976 113.091 3.68857C113.153 3.8468 113.248 3.98989 113.37 4.10849C113.661 4.3636 113.999 4.55903 114.365 4.68368C114.785 4.83841 115.266 5.00142 115.806 5.18173C116.35 5.36507 116.875 5.59872 117.376 5.87802C117.837 6.13139 118.229 6.49441 118.517 6.93466C118.821 7.44187 118.97 8.02655 118.946 8.61728C118.949 9.21309 118.789 9.79871 118.483 10.3097C118.152 10.8484 117.676 11.2829 117.11 11.5636C116.413 11.8992 115.644 12.0608 114.871 12.0352V12.0099C114.099 12.0237 113.333 11.8761 112.623 11.5733C112 11.3054 111.465 10.8678 111.079 10.3106C110.69 9.7169 110.487 9.02042 110.496 8.31064H112.735C112.745 8.82598 112.958 9.31643 113.327 9.67587C113.533 9.86698 113.775 10.0157 114.039 10.1114C114.302 10.207 114.583 10.2482 114.863 10.2335C115.342 10.2592 115.815 10.1167 116.201 9.83017C116.361 9.70045 116.49 9.53525 116.576 9.34775C116.662 9.16006 116.705 8.95464 116.699 8.74814C116.708 8.54313 116.672 8.33837 116.597 8.14755C116.522 7.95691 116.408 7.78419 116.261 7.64072C115.922 7.34677 115.524 7.12698 115.094 6.99618C114.605 6.83227 114.09 6.65282 113.541 6.46396C112.775 6.23368 112.076 5.82382 111.5 5.26962C111.26 5.00904 111.074 4.70344 110.953 4.37021C110.862 4.12015 110.809 3.85853 110.796 3.59384V3.09482C110.816 2.5492 110.984 2.01792 111.285 1.55868C111.629 1.05538 112.107 0.659055 112.666 0.416106C113.303 0.133269 113.995 -0.00409222 114.691 0.0127857ZM149.835 0.00497322C151.06 -0.0476541 152.268 0.318659 153.258 1.04404C154.167 1.76379 154.763 2.80724 154.923 3.95615H152.59C152.471 3.367 152.145 2.83933 151.672 2.46982C151.129 2.08702 150.474 1.89656 149.81 1.9288C149.335 1.90484 148.86 1.99073 148.423 2.17978C147.985 2.36891 147.597 2.65641 147.288 3.01962C146.679 3.74974 146.379 4.74672 146.379 6.01767C146.379 7.28843 146.679 8.28478 147.288 9.00595C147.846 9.5818 148.584 9.95139 149.379 10.0558C150.174 10.1601 150.981 9.99245 151.669 9.58017C152.137 9.24322 152.464 8.74492 152.587 8.18075H154.92C154.748 9.29456 154.152 10.2984 153.256 10.9806C152.259 11.6901 151.054 12.047 149.832 11.9942L149.835 12.0108C148.78 12.043 147.737 11.7821 146.822 11.2569C145.986 10.7572 145.313 10.0264 144.883 9.15243C144.436 8.16937 144.205 7.10162 144.205 6.02157C144.205 4.94149 144.436 3.87382 144.883 2.89072C145.31 2.01036 145.984 1.27339 146.822 0.769622C147.737 0.241939 148.779 -0.0228278 149.835 0.00497322ZM125.416 11.8136H123.297V0.202239H125.416V11.8136ZM137.719 8.37802V0.202239H139.839V11.8136H137.719L132.271 3.65439V11.8136H130.152V0.202239H132.271L137.719 8.37802ZM161.391 5.02841H166.591V0.202239H168.71V11.8136H166.591V6.75497H161.391V11.8136H159.272V0.202239H161.391V5.02841Z" fill="#F7F9FA"/>
+<path d="M128.351 23.9172C136.829 24.067 143.762 27.9108 145.758 36.1984L138.825 37.8459C137.727 34.2011 134.136 31.0558 128.351 31.0558C121.218 31.056 117.627 35.3514 117.627 41.7404C117.627 48.2802 121.766 52.4239 128.351 52.424C134.435 52.424 137.778 49.3289 138.825 45.5851L145.758 47.2824C143.762 55.5698 136.829 59.4123 128.351 59.5637H128.002C118.376 59.5637 110.495 53.9222 110.495 41.7404C110.495 29.5583 118.376 23.9172 128.002 23.9172H128.351ZM288.218 33.9543C296.398 33.9543 302.733 38.1475 302.733 46.7336C302.728 47.2017 302.693 47.6699 302.632 48.134H279.689C279.823 49.022 280.134 49.8742 280.605 50.6379C281.077 51.4014 281.7 52.0611 282.435 52.5763C283.83 53.6255 286.024 54.1232 288.019 54.1232H288.415C290.361 54.1232 291.956 53.9233 293.205 53.3234C294.587 52.6761 295.663 51.5109 296.198 50.0783L302.733 50.4289C302.086 54.0746 299.939 56.3197 297.346 57.6672C294.752 59.0669 291.661 59.5168 288.218 59.5168C280.04 59.5167 273.056 55.3689 273.056 46.7336C273.056 38.0982 280.035 33.9543 288.218 33.9543ZM367.796 24.2678V59.2131H360.716V53.925C360.447 54.6031 360.058 55.2282 359.57 55.7707C357.326 58.1149 353.385 59.5148 350.091 59.5148C341.863 59.5148 337.275 55.3678 337.274 46.7326C337.274 38.097 341.863 34.0014 350.091 33.9523C353.435 33.9523 357.326 35.5 359.57 37.8967C360.058 38.4373 360.447 39.0619 360.716 39.7394V24.2678H367.796ZM187.737 33.9523C193.922 33.9523 200.955 37.2472 201.753 43.9367L195.17 44.3859C194.372 41.5403 191.728 39.4934 187.738 39.4933C182.95 39.4933 179.758 42.2392 179.758 46.7326C179.758 51.1759 182.95 53.9219 187.487 53.9221H187.787C191.727 53.7717 194.071 52.2743 195.118 49.2795L201.752 49.6779C200.954 56.2182 193.922 59.5137 187.737 59.5138C179.607 59.5138 172.624 55.3693 172.624 46.7326C172.624 38.0962 179.607 33.9525 187.737 33.9523ZM253.593 23.7668C261.872 23.9166 268.105 27.0128 268.505 34.2512L261.772 34.6008C261.523 31.6053 258.979 30.3059 253.593 30.3058C248.156 30.3058 245.014 31.8539 245.014 34.6496C245.014 40.341 269.802 34.5515 269.802 47.7805C269.802 52.8229 266.609 59.4621 253.144 59.4621C241.026 59.462 237.732 53.9707 237.583 48.2297L244.465 47.881C244.714 51.3257 248.006 52.8738 252.994 52.924C259.029 52.924 262.67 51.5257 262.67 48.131C262.67 41.7905 237.882 47.631 237.882 34.7004C237.882 26.7627 245.413 23.7669 253.094 23.7668H253.593ZM323.753 33.8527C330.636 33.8511 333.528 39.3423 333.528 47.8303V59.2131H326.445V47.7834C326.445 43.3904 324.201 40.9936 321.109 40.9933C318.164 40.9933 313.677 42.6914 313.677 49.881V59.215H306.543V34.2531H313.677V42.1437C313.805 41.5217 314.005 40.9174 314.276 40.3439C316.271 35.8004 320.363 33.8528 323.753 33.8527ZM156.573 59.214H149.441V22.7678H156.573V59.214ZM168.61 59.214H161.627V33.3527H168.61V59.214ZM212.578 40.0207V43.7619L224.231 34.2512H234.506L222.437 44.0373L235.256 59.1642H232.36V59.2131L232.312 59.1642H226.227L217.049 48.2306L212.709 51.7746V59.2131H205.529V24.2678H212.709L212.578 40.0207ZM350.714 40.2805C346.597 40.6442 344.182 43.0898 344.182 46.7189C344.182 50.5122 347.127 53.1583 351.513 53.1584H351.769V53.1594C355.888 52.7937 358.292 50.3515 358.292 46.7189C358.292 42.9259 355.349 40.2805 350.964 40.2805H350.714ZM288.117 39.0461C286.272 39.0461 283.779 39.6456 282.184 41.0422V41.0412C281.268 41.886 280.589 42.952 280.208 44.1369H296.146C295.6 42.3405 294.851 41.1928 293.604 40.3439C292.356 39.4949 290.409 39.0461 288.415 39.0461H288.117ZM168.71 29.9582H161.527V22.7678H168.71V29.9582Z" fill="#F7F9FA"/>
+</svg>
+          <div class="intro-text">
+            <h1 class="display d-lg">From how we look to what we say</h1>
+            <p class="intro-sub">Marketing - October 2026</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A. Why anyone picks us? -->
+  <section class="section" id="why" aria-label="Why anyone picks us?">
+    <div class="stage">
+      <h2 class="abs slide-title display d-lg">Why anyone picks us?</h2>
+      <div class="abs compare">
+        <div class="row head">
+          <div class="cell now"><p class="display d-md">Where we are</p></div>
+          <div class="cell next"><p class="display d-md">What we’re proposing</p></div>
+        </div>
+        <div class="row">
+          <div class="cell label"><p class="display d-md">What changes?</p></div>
+          <div class="cell now"><p class="b-lg">Visual brand (logo update, colour palette, type etc)</p></div>
+          <div class="cell next"><p class="b-lg">The visual brand, plus the story, category,<br>voice and character</p></div>
+        </div>
+        <div class="row">
+          <div class="cell label"><p class="display d-md">What we say</p></div>
+          <div class="cell now"><p class="b-lg">“Business messaging that works out of the box”</p></div>
+          <div class="cell next"><p class="b-lg">... you’ll have to wait for the reveal 😉</p></div>
+        </div>
+        <div class="row">
+          <div class="cell label"><p class="display d-md">Could a competitor say it?</p></div>
+          <div class="cell now"><p class="b-lg">Yes ✅</p></div>
+          <div class="cell next"><p class="b-lg">No ❌</p></div>
+        </div>
+        <div class="row">
+          <div class="cell label"><p class="display d-md">What moves?</p></div>
+          <div class="cell now"><p class="b-lg">How we look</p></div>
+          <div class="cell next"><p class="b-lg">How we’re remembered and chosen</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B. The culture effect -->
+  <section class="section" id="culture" aria-label="The culture effect">
+    <div class="stage">
+      <h2 class="abs slide-title display d-lg">The culture effect</h2>
+      <div class="abs culture">
+        <div class="left">
+          <div class="stats">
+            <div class="stat" style="width:392px"><p class="display d-2xl num">28%</p><p class="what">lower<br>turnover</p></div>
+            <div class="stat" style="width:426px"><p class="display d-2xl num">50%</p><p class="what">lower cost<br>per hire</p></div>
+          </div>
+          <div class="panel p1"><p class="display d-md">Two words to say it</p><p class="b-lg">You’ll meet them in a few slides.</p></div>
+          <div class="panel p2"><p class="display d-md">One breath to explain it</p><p class="b-lg">Business texting that gets customers to turn up,<br>pay up and stay in the loop.</p></div>
+          <div class="panel p3"><p class="display d-md">One question every team works from</p><p class="b-lg">What problem are we solving for the customer?</p></div>
+        </div>
+        <div class="merch">
+          <figure><img src="culture-tote.jpg" alt="Tote bag: Click. Send. It's in the name." loading="lazy"></figure>
+          <figure><img src="culture-bottle.jpg" alt="Water bottle with ClickSend stickers" loading="lazy"></figure>
+          <figure><img src="culture-balloon.jpg" alt="Inflatable Clicky in a shop window" loading="lazy"></figure>
+          <figure><img src="culture-tshirt.jpg" alt="Navy T-shirt with the Sinch ClickSend logo" loading="lazy"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C. The market -->
+  <section class="section" id="market" aria-label="The market">
+    <div class="stage">
+      <h2 class="abs slide-title display d-lg">The market</h2>
+      <div class="abs market">
+        <div class="cols">
+          <div class="col l">
+            <div class="quote short"><div class="top"><span class="dots3"><i></i><i></i><i></i></span><img src="logo-twilio.png" alt="Twilio"></div><p>“The platform for conversations in the AI era”</p></div>
+            <div class="quote"><div class="top"><span class="dots3"><i></i><i></i><i></i></span><img src="logo-sinch.png" alt="Sinch" style="width:124px"></div><p>“The communications infrastructure<br>the AI era runs on”</p></div>
+            <div class="quote"><div class="top"><span class="dots3"><i></i><i></i><i></i></span><img src="logo-bird.png" alt="Bird"></div><p>“Communications infrastructure your AI agents operate”</p></div>
+          </div>
+          <div class="col r">
+            <div class="quote"><div class="top"><span class="dots3"><i></i><i></i><i></i></span><img src="logo-eztexting.png" alt="EZ Texting"></div><p>“SMS marketing that’s easy to use and impossible to outgrow”</p></div>
+            <div class="quote"><div class="top"><span class="dots3"><i></i><i></i><i></i></span><img src="logo-simpletexting.png" alt="SimpleTexting"></div><p>“A texting service designed to help small businesses win”</p></div>
+            <div class="quote"><div class="top"><span class="dots3"><i></i><i></i><i></i></span><img src="logo-textmagic.png" alt="Textmagic"></div><p>“Business text messaging for marketing and communications”</p></div>
+          </div>
+        </div>
+        <div class="complaints-bar"><p class="display d-sm">Recurring complaints against competitors</p></div>
+        <div class="complaints">
+          <div class="complaint"><h3>Onboarding friction</h3><p class="b-lg">Verification delays, confusing setup, slow to first send.</p></div>
+          <div class="complaint"><h3>Pricing surprises</h3><p class="b-lg">Hidden fees, costs grow as you do, expensive add-ons.</p></div>
+          <div class="complaint"><h3>Delivery failures</h3><p class="b-lg">Messages failed or delayed, unreliable in some regions.</p></div>
+          <div class="complaint"><h3>Slow or absent support</h3><p class="b-lg">Week-long replies, no weekend cover, absent during outages.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="duo" id="duo">
     <!-- 1. Audience -->
     <section class="section" id="audience" aria-label="Audience">
@@ -430,6 +610,121 @@ p,ul,ol{margin:0;padding:0}
   document.getElementById('homepage').addEventListener('pointerleave', function(){
     post(home, {cs:'leave'});
   });
+
+  /* ---------- The market: cascading reveal ----------
+     Cards are ordered by their vertical position (the right column starts higher, so the
+     EZ Texting card leads), then the complaints bar, then the four complaint cards. */
+  var market = document.querySelector('#market .market');
+  if (!reduce && market) {
+    var items = [].slice.call(market.querySelectorAll('.quote')).sort(function(a, b){
+      var d = a.getBoundingClientRect().top - b.getBoundingClientRect().top;
+      return Math.abs(d) < 2 ? a.getBoundingClientRect().left - b.getBoundingClientRect().left : d;
+    });
+    items.push(market.querySelector('.complaints-bar'));
+    var STEP = 90, n = 0;
+    items.forEach(function(el){ el.classList.add('cascade'); el.style.setProperty('--d', (n++ * STEP) + 'ms'); });
+    [].forEach.call(market.querySelectorAll('.complaint'), function(el, i){
+      el.classList.add('cascade'); el.style.setProperty('--d', (n * STEP + i * 60) + 'ms');
+    });
+    market.classList.add('armed');
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.intersectionRatio >= 0.5) requestAnimationFrame(function(){ market.classList.add('in'); });
+        else if (!en.isIntersecting) market.classList.remove('in');   // reset once fully off screen, so it replays
+      });
+    }, {threshold:[0, 0.5]}).observe(document.getElementById('market'));
+  }
+
+  /* ---------- Same cascade for the text cards on slides 1 and 2 ----------
+     Cards are grouped into rows by their vertical position. Rows start 120ms apart,
+     and cards within a row 60ms apart, left to right. The photos on slide 2 stay put. */
+  function cascadeRows(sectionId, container, selector){
+    var box = document.querySelector(container);
+    if (reduce || !box) return;
+    var els = [].slice.call(box.querySelectorAll(selector)).map(function(el){
+      var r = el.getBoundingClientRect(); return {el:el, top:Math.round(r.top), left:r.left};
+    }).sort(function(a, b){ return Math.abs(a.top - b.top) < 4 ? a.left - b.left : a.top - b.top; });
+    var row = -1, lastTop = null, inRow = 0;
+    els.forEach(function(x){
+      if (lastTop === null || Math.abs(x.top - lastTop) >= 4){ row++; inRow = 0; lastTop = x.top; }
+      x.el.classList.add('cascade');
+      x.el.style.setProperty('--d', (row * 120 + inRow++ * 60) + 'ms');
+    });
+    box.classList.add('armed');
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.intersectionRatio >= 0.5) requestAnimationFrame(function(){ box.classList.add('in'); });
+        else if (!en.isIntersecting) box.classList.remove('in');
+      });
+    }, {threshold:[0, 0.5]}).observe(document.getElementById(sectionId));
+  }
+  cascadeRows('intro', '#intro .intro-group', '.intro-logo, h1, .intro-sub');
+  cascadeRows('why', '#why .compare', '.cell');
+
+  /* ---------- Intro Clicky: fixed in place; eyes wander at random and he blinks ----------
+     Pupils move as a pair, clamped inside the whites (same rules as the other Clickys).
+     He doesn't follow the cursor. Glances favour down-left towards the title, with the odd
+     left-then-right look. Pauses while the slide is off screen; still with reduced motion. */
+  (function(){
+    var sec = document.getElementById('intro'), svg = document.getElementById('introClicky');
+    if (!sec || !svg || reduce) return;
+    var pupils = [].slice.call(svg.querySelectorAll('.pupil'));
+    var lids = [].slice.call(svg.querySelectorAll('.lid'));
+    var SOCKETS = [{x:61.3,y:45},{x:113.6,y:45}], MAX = 20.14 - 10.60;
+    function norm(x,y){ var m = Math.hypot(x,y) || 1; return {x:x/m*MAX, y:y/m*MAX}; }
+    function clampV(x,y){ var m = Math.hypot(x,y); return m <= MAX ? {x:x,y:y} : {x:x/m*MAX, y:y/m*MAX}; }
+    var REST = norm(-9,17), cur = {x:REST.x, y:REST.y};
+    var SPOTS = [[-9,17],[-9,17],[-9,17],[-6.5,0.5],[6.5,0.5],[-5,-4],[5,-4],[0,17],[9,17]];
+    var gaze = REST, next = performance.now() + 1500, queue = [], visible = false, raf = null;
+
+    new IntersectionObserver(function(en){
+      en.forEach(function(e){ visible = e.isIntersecting; if (visible && !raf) raf = requestAnimationFrame(tick); });
+    }, {threshold:0}).observe(sec);
+
+    function setLid(s){ lids.forEach(function(l){ l.setAttribute('transform','translate(0 ' + (45*(1-s)).toFixed(2) + ') scale(1 ' + s.toFixed(3) + ')'); }); }
+    var blinking = false;
+    function blink(){
+      if (blinking) return Promise.resolve(); blinking = true;
+      return new Promise(function(res){
+        var t0 = performance.now();
+        (function step(now){
+          var t = Math.min(1, (now - t0) / 160);
+          setLid(t < .5 ? 1 - t*2*0.92 : 0.08 + (t-.5)*2*0.92);
+          if (t < 1) requestAnimationFrame(step); else { setLid(1); blinking = false; res(); }
+        })(t0);
+      });
+    }
+    (async function loop(){
+      while (true){
+        await new Promise(function(r){ setTimeout(r, 2500 + Math.random()*3500); });
+        if (!visible || blinking) continue;
+        await blink();
+        if (Math.random() < 0.2){ await new Promise(function(r){ setTimeout(r, 120); }); await blink(); }
+      }
+    })();
+
+    function plan(now){
+      if (queue.length){ var q = queue.shift(); gaze = norm(q[0], q[1]); next = now + q[2]; return; }
+      if (Math.random() < 0.22){
+        gaze = norm(-6.5, 0.5); next = now + 450 + Math.random()*200;
+        queue = [[6.5, 0.5, 550 + Math.random()*250], [-9, 17, 1800 + Math.random()*1800]];
+      } else {
+        var sp = SPOTS[Math.floor(Math.random()*SPOTS.length)];
+        gaze = norm(sp[0], sp[1]); next = now + 1600 + Math.random()*2200;
+      }
+      if (Math.random() < 0.3) blink();
+    }
+    function tick(now){
+      raf = null;
+      if (!visible) return;
+      if (now >= next) plan(now);
+      var t = clampV(gaze.x + Math.sin(now/1000*0.9)*0.25, gaze.y + Math.cos(now/1000*1.3)*0.2);
+      cur.x += (t.x - cur.x)*0.2; cur.y += (t.y - cur.y)*0.2;
+      pupils.forEach(function(p,i){ p.setAttribute('cx', (SOCKETS[i].x + cur.x).toFixed(2)); p.setAttribute('cy', (SOCKETS[i].y + cur.y).toFixed(2)); });
+      raf = requestAnimationFrame(tick);
+    }
+  })();
+  cascadeRows('culture', '#culture .left', '.stat, .panel');
 
   /* ---------- Problem tags follow the ad showing in each video ----------
      Each clip shows two ads; the tag changes at the cut (~4.9s). The poster is the last frame,
